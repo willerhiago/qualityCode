@@ -1,0 +1,17 @@
+{
+  "name": "lab2",
+  "version": "1.0.0",
+  "main": "script.js",
+  "dependencies": {
+    "escomplex": "^2.0.0-alpha",
+    "shelljs": "^0.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "script": "node src/script.js",
+    "requestData":  "node src/request.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "Analise complexidade"
+}
