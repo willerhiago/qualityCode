@@ -3,13 +3,15 @@
   "version": "1.0.0",
   "main": "script.js",
   "dependencies": {
+    "axios": "^0.19.0",
     "escomplex": "^2.0.0-alpha",
+    "promise": "^8.0.3",
     "shelljs": "^0.8.3"
   },
   "devDependencies": {},
   "scripts": {
     "script": "node src/script.js",
-    "requestData":  "node src/request.js"
+    "requestData": "node src/request.js"
   },
   "author": "",
   "license": "ISC",

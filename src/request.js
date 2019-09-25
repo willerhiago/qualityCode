@@ -23,24 +23,29 @@ module.exports = {
     },
     
     requestData(cursor){
+        // try{
+
+        // }catch{
+
+        // }
         var url = 'https://api.github.com/graphql';
         var after = '';
         if(cursor) after = `, after:"${cursor}"`;
         var params = JSON.stringify({
-                        query : `query example { search(query: "language:python", first: 10, type: REPOSITORY ${after}) { pageInfo { hasNextPage endCursor } edges { node { ... on Repository{ name nameWithOwner createdAt updatedAt } } } } }`
+                        query : `query example { search(query: "language:python", first: 20, type: REPOSITORY ${after}) { pageInfo { hasNextPage endCursor } edges { node { ... on Repository{ name nameWithOwner createdAt updatedAt } } } } }`
                      });
         
-        axios.defaults.headers.common['Authorization'] = 'Bearer e9a64335ea44cdcc22444079385a160bfed8fb6e';
+        axios.defaults.headers.common['Authorization'] = 'Bearer 988d9fe5deff42249965a2b4e2bf8306357bba00';
         return axios.post(url, params).then( response =>{
            module.exports.concatResults(response.data);
-            if(data.length <= 10) module.exports.requestData(cursor);
-            if(data.length == 10){
+            if(data.length <= 1000) module.exports.requestData(cursor);
+            if(data.length == 1000){
                 var promises = [];
                 data.forEach( row =>{
                     promises.push(module.exports.getContribuidores(row));    
                 });
                 return Promise.all(promises).then( data =>{
-                    shell.ShellString(JSON.stringify(data)).toEnd("data.json");
+                    shell.ShellString(JSON.stringify(data)).to("data.json");
                 });
             }
             
